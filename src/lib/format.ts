@@ -6,13 +6,14 @@ import type { Currency } from '../types';
  * Todo con Intl (es-AR por defecto) para que USD/EUR/ARS se vean igual en toda la app.
  */
 
-export function formatMoney(amount: number, currency: Currency): string {
+export function formatMoney(amount: number | string, currency: Currency): string {
+  const value = typeof amount === 'string' ? Number(amount) : amount;
   return new Intl.NumberFormat('es-AR', {
     style: 'currency',
     currency,
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }).format(amount);
+  }).format(value);
 }
 
 export function formatDate(
