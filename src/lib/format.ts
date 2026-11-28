@@ -8,8 +8,10 @@ import type { Currency } from '../types';
 
 // amount puede venir como string (ej: Balance, desde el back) o number (otros campos).
 // La conversión es solo para mostrar en pantalla, nunca para operar con el valor.
+// Si el string no es un número válido devuelve '—' (igual que formatDate), en vez de "NaN".
 export function formatMoney(amount: number | string, currency: Currency): string {
   const value = typeof amount === 'string' ? Number(amount) : amount;
+  if (Number.isNaN(value)) return '—';
   return new Intl.NumberFormat('es-AR', {
     style: 'currency',
     currency,
