@@ -6,6 +6,7 @@ import { formatRate } from '../../../lib/format';
 // en que respondió el back, no la fecha del proveedor).
 // Las props usan el tipo compartido `Rate` (types/index.ts): si el contrato
 // cambia, TypeScript avisa acá también en vez de pasar en silencio.
+// Colores: usa los tokens del equipo (styles/index.css), no grises genéricos.
 
 function minutesAgo(respondedAt: string): number {
   const diffMs = Date.now() - new Date(respondedAt).getTime();
@@ -23,11 +24,11 @@ function agoText(respondedAt: string): string {
 
 export function RateCard({ from, to, rate, provider, respondedAt }: Rate) {
   return (
-    <div className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-      <p className="text-sm text-gray-500">
+    <div className="rounded-xl border border-line bg-card p-4 shadow-sm">
+      <p className="text-sm text-muted">
         1 {from} = {formatRate(rate)} {to}
       </p>
-      <p className="text-xs text-gray-400">
+      <p className="text-xs text-muted">
         {provider} · {agoText(respondedAt)}
       </p>
     </div>

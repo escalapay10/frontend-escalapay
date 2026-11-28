@@ -8,16 +8,18 @@ import { RateCard } from '../components/RateCard';
 // Cuando GET /api/wallet y GET /api/rates estén listos, estos mocks
 // se reemplazan por llamadas reales con axios (apiClient), y ahí se suman
 // los estados de carga y de error con reintento.
+// Sin padding propio: AppLayout ya le pone márgenes al contenido de cada página.
+// Colores: usa los tokens del equipo (styles/index.css).
 
 export default function DashboardPage() {
   return (
-    <div className="p-6 space-y-6">
+    <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h1 className="text-xl font-semibold text-gray-900">Dashboard</h1>
+        <h1 className="text-xl font-semibold text-ink">Dashboard</h1>
         {/* Acceso rápido a operaciones (FE-4, placeholder en el Sprint 1) */}
         <Link
           to="/operations"
-          className="rounded-lg bg-gray-900 px-4 py-2 text-sm font-medium text-white"
+          className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700"
         >
           Nueva operación
         </Link>
@@ -25,7 +27,7 @@ export default function DashboardPage() {
 
       {/* Estado vacío: si no hay saldos, mostramos un mensaje en vez de una grilla vacía */}
       {mockBalances.length === 0 ? (
-        <p className="text-sm text-gray-500">Todavía no tenés saldos para mostrar.</p>
+        <p className="text-sm text-muted">Todavía no tenés saldos para mostrar.</p>
       ) : (
         <section className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {mockBalances.map((balance) => (
