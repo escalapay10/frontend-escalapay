@@ -44,7 +44,7 @@ export interface Quote {
   rate: number;
   /** Frankfurter / ExchangeRate-API */
   provider: string;
-  fetchedAt: string;
+  respondedAt: string;
   expiresAt: string;
 }
 
@@ -54,7 +54,7 @@ export interface Rate {
   to: Currency;
   rate: number;
   provider: string;
-  fetchedAt: string;
+  respondedAt: string;
 }
 
 export interface Transaction {
