@@ -1,20 +1,24 @@
 import { formatRate } from '../../../lib/format';
 
+// Tarjeta que muestra la tasa de cambio del dashboard: par de monedas,
+// proveedor y "hace X min" calculado a partir de respondedAt (momento
+// en que el back consultó al proveedor, no la fecha del proveedor).
+
 interface RateCardProps {
   from: string;
   to: string;
   rate: number;
   provider: string;
-  fetchedAt: string;
+  respondedAt: string;
 }
 
-function minutesAgo(fetchedAt: string): number {
-  const diffMs = Date.now() - new Date(fetchedAt).getTime();
+function minutesAgo(respondedAt: string): number {
+  const diffMs = Date.now() - new Date(respondedAt).getTime();
   return Math.floor(diffMs / 1000 / 60);
 }
 
-export function RateCard({ from, to, rate, provider, fetchedAt }: RateCardProps) {
-  const minutes = minutesAgo(fetchedAt);
+export function RateCard({ from, to, rate, provider, respondedAt }: RateCardProps) {
+  const minutes = minutesAgo(respondedAt);
   const agoText = minutes < 1 ? 'hace instantes' : `hace ${minutes} min`;
 
   return (

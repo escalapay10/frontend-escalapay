@@ -3,6 +3,10 @@ import { BalanceCard } from '../components/BalanceCard';
 import { mockRate } from '../../rates/mocks';
 import { RateCard } from '../../rates/components/RateCard';
 
+// Dashboard (FE-3): junta los BalanceCard y el RateCard usando mocks.
+// Cuando GET /api/wallet y GET /api/rates estén listos, estos mocks
+// se reemplazan por llamadas reales con axios (apiClient).
+
 export default function DashboardPage() {
   return (
     <div className="p-6 space-y-6">

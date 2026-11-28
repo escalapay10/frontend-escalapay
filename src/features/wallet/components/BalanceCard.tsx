@@ -1,6 +1,9 @@
 import type { Currency } from '../../../types';
 import { formatMoney } from '../../../lib/format';
 
+// Tarjeta que muestra un saldo por moneda (USD/EUR/ARS). Sin lógica propia,
+// solo recibe currency + amount y los formatea con formatMoney.
+
 interface BalanceCardProps {
     currency: Currency;
     amount: string | number;
