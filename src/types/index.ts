@@ -44,7 +44,7 @@ export interface Quote {
   rate: number;
   /** Frankfurter / ExchangeRate-API */
   provider: string;
-  fetchedAt: string;
+  respondedAt: string;
   expiresAt: string;
 }
 
@@ -54,8 +54,9 @@ export interface Rate {
   to: Currency;
   rate: number;
   provider: string;
-  fetchedAt: string;
+  respondedAt: string;
 }
+// También renombré fetchedAt → respondedAt en Quote y Rate (types/index.ts), para que coincida con el contrato de tasas que confirmó Back.
 
 export interface Transaction {
   id: string;

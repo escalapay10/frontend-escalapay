@@ -16,6 +16,16 @@ describe('formatMoney', () => {
     expect(formatted).toContain('20,00');
     expect(formatted.startsWith('-')).toBe(true);
   });
+
+  // Montos como string, como los manda el back (NUMERIC de PostgreSQL)
+  it('acepta montos como string con muchos decimales', () => {
+    expect(formatMoney('1200.50000000', 'USD')).toContain('1.200,50');
+    expect(formatMoney('800000.00000000', 'ARS')).toContain('800.000,00');
+  });
+
+  it('devuelve un guion si el string no es un número válido', () => {
+    expect(formatMoney('abc', 'USD')).toBe('—');
+  });
 });
 
 describe('formatDate', () => {
