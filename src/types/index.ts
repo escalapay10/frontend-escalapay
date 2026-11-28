@@ -56,6 +56,7 @@ export interface Rate {
   provider: string;
   respondedAt: string;
 }
+// También renombré fetchedAt → respondedAt en Quote y Rate (types/index.ts), para que coincida con el contrato de tasas que confirmó Back.
 
 export interface Transaction {
   id: string;
