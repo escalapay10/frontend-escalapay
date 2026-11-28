@@ -29,8 +29,9 @@ export interface AuthResponse {
 }
 
 export interface Balance {
+  walletId: string;
   currency: Currency;
-  amount: number;
+  amount: string;
 }
 
 /**
